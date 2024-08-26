@@ -1478,6 +1478,26 @@ class ThreadTodo(QThread):
                 quest_list[i]["battle_plan_1p"] = "00000000-0000-0000-0000-000000000000"
                 quest_list[i]["battle_plan_2p"] = "00000000-0000-0000-0000-000000000001"
 
+            # quest_list_1p = []
+            # quest_list_2p = []
+            # quest_list_dust = []
+            # for quest in quest_list:
+            #     if len(quest["player"]) == 2:
+            #         quest_list_dust.append(quest)
+            #     elif quest["player"] == [1]:
+            #         quest_list_1p.append(quest)
+            #     else:
+            #         quest_list_2p.append(quest)
+            #
+            # thread1p = threading.Thread(target=self.battle_1_n_n, args=(quest_list_1p,))
+            # thread2p = threading.Thread(target=self.battle_1_n_n, args=(quest_list_2p,))
+            #
+            # thread1p.start()
+            # thread2p.start()
+            #
+            # thread1p.join()
+            # thread2p.join()
+            # self.battle_1_n_n(quest_list=quest_list_dust)
             self.battle_1_n_n(quest_list=quest_list)
 
             return True
@@ -2048,6 +2068,10 @@ class ThreadTodo(QThread):
         else:
             self.signal_print_to_ui.emit(
                 text="已完成所有额外事项！推荐勾选高级设置-完成后刷新游戏, 防止长期运行flash导致卡顿")
+
+        if c_opt["shutdown"]["active"]:
+            os.system("shutdown /s /t 0")
+            exit(0)
 
         # 全部完成了发个信号
         self.signal_todo_end.emit()

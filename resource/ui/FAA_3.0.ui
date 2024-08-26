@@ -2154,6 +2154,13 @@ Link Start</string>
            </layout>
           </item>
           <item>
+           <widget class="QCheckBox" name="Shutdown">
+            <property name="text">
+             <string>完成后关机</string>
+            </property>
+           </widget>
+          </item>
+          <item>
            <layout class="QGridLayout" name="Lay_Tab2">
             <property name="sizeConstraint">
              <enum>QLayout::SetMinimumSize</enum>

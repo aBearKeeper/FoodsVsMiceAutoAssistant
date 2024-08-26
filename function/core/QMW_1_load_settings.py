@@ -157,6 +157,9 @@ class QMainWindowLoadSettings(QMainWindowLoadUI):
         # 获取前半部分
         my_opt = self.opt["todo_plans"][int(self.opt["current_plan"])]
 
+        # 完成后关机
+        self.Shutdown.setChecked(my_opt["shutdown"]["active"])
+
         # 签到 浇水施肥摘果 勇士本
 
         self.SignIn_Active.setChecked(my_opt["sign_in"]["active"])
@@ -526,6 +529,9 @@ class QMainWindowLoadSettings(QMainWindowLoadUI):
         def todo_plans() -> None:
             # 获取前半部分
             my_opt = self.opt["todo_plans"][self.opt["current_plan"]]
+
+            # 完成后关机
+            my_opt["shutdown"]["active"] = self.Shutdown.isChecked()
 
             # 签到 浇水施肥摘果 勇士本
 
